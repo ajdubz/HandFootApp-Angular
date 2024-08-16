@@ -1,31 +1,46 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterModule } from '@angular/router';
-import { FormsModule, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-add-player',
+  standalone: true,
+  imports: [RouterOutlet, CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
   templateUrl: './add-player.component.html',
   styleUrls: ['./add-player.component.scss']
 })
 export class AddPlayerComponent implements OnInit {
+
   player: Player = new Player('', '', '', '', 0);
+  name: string = '';
+  email: string = '';
+  password: string = '';
+  confirmPassword: string = '';
+  teamId: number = 0;
+
   addPlayerForm: FormGroup = new FormGroup({});
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.addPlayerForm = this.fb.group({
-      username: ['', Validators.required],
+      name: [ '', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
-    }, { validator: this.passwordMatchValidator });
+      confirmPassword: ['', Validators.required],
+      teamId: [0]
+    }, { validators: this.passwordMatchValidator });
   }
 
   onSubmit(): void {
+    
+
+    
     if (this.addPlayerForm.valid) {
-      // Handle form submission
+    this.player = this.addPlayerForm.value;
+    console.log(this.player);
+      
     }
   }
 

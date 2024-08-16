@@ -1,30 +1,45 @@
 <p>add-player works!</p>
 
-<form>
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" [(ngModel)]="player.name">
-    </div>
+<form [formGroup]="addPlayerForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="name">Name: </label>
+            <input id="name" formControlName="name">
+            <div *ngIf="addPlayerForm.get('name')?.invalid && addPlayerForm.get('name')?.touched">
+                name is required.
+            </div>
+        </div>
 
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" [(ngModel)]="player.email">
-    </div>
+        <div>
+            <label for="email">Email: </label>
+            <input id="email" formControlName="email">
+            <div *ngIf="addPlayerForm.get('email')?.invalid && addPlayerForm.get('email')?.touched">
+                Enter a valid email.
+            </div>
+        </div>
 
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" [(ngModel)]="player.password">
-    </div>
+        <div>
+            <label for="teamId">Team Id: </label>
+            <input id="teamId" type="number" formControlName="teamId">
+            <div *ngIf="addPlayerForm.get('teamId')?.invalid && addPlayerForm.get('teamId')?.touched">
+                Passwords do not match.
+            </div>
+        </div>
 
-    <div>
-        <label for="password">Confirm Password:</label>
-        <input type="password" id="password" name="password" [(ngModel)]="player.confirmPassword">
-    </div>
+        <div>
+            <label for="password">Password: </label>
+            <input id="password" type="password" formControlName="password">
+            <div *ngIf="addPlayerForm.get('password')?.invalid && addPlayerForm.get('password')?.touched">
+                Password is required and must be at least 6 characters long.
+            </div>
+        </div>
 
-    <div>
-        <label for="teamId">Team ID:</label>
-        <input type="number" id="teamId" name="teamId" [(ngModel)]="player.teamId">
-    </div>
+        <div>
+            <label for="confirmPassword">Confirm Password: </label>
+            <input id="confirmPassword" type="password" formControlName="confirmPassword">
+            <div *ngIf="addPlayerForm && addPlayerForm.errors && addPlayerForm.errors['mismatch'] && addPlayerForm.get('confirmPassword')?.touched">
+                Passwords do not match.
+            </div>
+        </div>
 
-    <button type="submit">Add Player</button>
+        <button type="submit" [disabled]="addPlayerForm.invalid">Submit</button>
 </form>
