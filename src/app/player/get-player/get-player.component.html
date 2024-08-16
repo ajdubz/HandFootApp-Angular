@@ -1,0 +1,17 @@
+<p>get-player works!</p>
+<p>name: {{data.nickName}}</p>
+<p>team name: {{data.team?.name}}</p>
+
+<p>Friends</p>
+
+<table>
+  <tr>
+    <td>Id</td>
+    <td>Name</td>
+    <td>Team Name</td>
+  </tr>
+  <tr *ngFor="let friend of data.friends">
+    <td>{{ friend.id }}</td>
+    <td>{{ friend.nickName }}</td>
+    <td>{{ friend.team.name }}</td>
+  </tr>

@@ -1,0 +1,17 @@
+<p>get-all Players works!</p>
+
+
+<table>
+    <tr>
+      <td>Id</td>
+      <td>Name</td>
+      <td>Team Name</td>
+    </tr>
+    <tr *ngFor="let item of data">
+      <td>{{ item.id }}</td>
+      <td>
+        <button (click)="sendValue(item.id)">{{ item.nickName }}</button>
+      </td>
+      <td>{{ item.team.name }}</td>
+    </tr>
+  </table>
