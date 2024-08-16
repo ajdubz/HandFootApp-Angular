@@ -27,7 +27,12 @@ export class GetAllPlayersComponent {
   }
 
   sendValue(id: any) {
-    this.router.navigate(['/player', id]);
+    if (id == 0) {
+      this.router.navigate(['/add-player']);
+    }
+    else {
+      this.router.navigate(['/player', id]);
+    }
   }
 
 

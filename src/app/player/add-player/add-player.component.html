@@ -1,0 +1,30 @@
+<p>add-player works!</p>
+
+<form>
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="player.name">
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="player.email">
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="player.password">
+    </div>
+
+    <div>
+        <label for="password">Confirm Password:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="player.confirmPassword">
+    </div>
+
+    <div>
+        <label for="teamId">Team ID:</label>
+        <input type="number" id="teamId" name="teamId" [(ngModel)]="player.teamId">
+    </div>
+
+    <button type="submit">Add Player</button>
+</form>
