@@ -1,0 +1,16 @@
+<p>get-team works!</p>
+<p>team id: {{team.id}}</p>
+<p>team name: {{team.name}}</p>
+
+<p>Players</p>
+
+<table>
+  <tr>
+    <td>Id</td>
+    <td>Name</td>
+  </tr>
+  <tr *ngFor="let player of team.players">
+    <td>{{ player.id }}</td>
+    <td>{{ player.nickName }}</td>
+  </tr>
+</table>

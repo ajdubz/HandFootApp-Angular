@@ -12,4 +12,12 @@ export class TeamService {
     let url = 'https://localhost:7133/Team';
     return this.http.get(url);
   }
+  getTeam(id: any): Observable<any> {
+    let url = 'https://localhost:7133/Team/' + id;
+    return this.http.get(url);
+  }
+  addTeam(team: any): Observable<any> {
+    let url = 'https://localhost:7133/Team';
+    return this.http.post(url, team);
+  }
 }

@@ -13,18 +13,24 @@ import { RouterOutlet, RouterModule, ActivatedRoute } from '@angular/router';
 export class GetPlayerComponent {
 
   data!: any;
-  inId!: any;
+  playerId!: number;
 
 
   constructor(private playerService: PlayerService, private route: ActivatedRoute) {
-    this.inId = this.route.snapshot.paramMap.get('id');
-    this.playerService.getPlayer(this.inId).subscribe((data: any) => {
-      this.data = data;
+    this.route.params.subscribe((params) => {
+      this.playerId = params['id'];
+      this.playerService.getPlayer(this.playerId).subscribe({
+        next: (data) => {
+          this.data = data;
+        },
+        error: (error) => {
+          console.error('There was an error!', error);
+        },
+      });
     });
   }
 
   ngOnInit(): void {
-    
     
   }
 
