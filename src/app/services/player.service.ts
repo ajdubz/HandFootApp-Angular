@@ -16,4 +16,9 @@ export class PlayerService {
     let url = 'https://localhost:7133/Player/' + id;
     return this.http.get(url);
   }
+
+  addPlayer(player: any): Observable<any> {
+    let url = 'https://localhost:7133/Player';
+    return this.http.post(url, player);
+  }
 }
