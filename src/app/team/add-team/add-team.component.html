@@ -1,1 +1,23 @@
 <p>add-team works!</p>
+
+<form [formGroup]="addTeamForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">Name: </label>
+        <input id="name" formControlName="name">
+        <div *ngIf="addTeamForm.get('name')?.invalid && addTeamForm.get('name')?.touched">
+            Name is required.
+        </div>
+    </div>
+
+    <div>
+        <label for="players">Players: </label>
+        <select id="players" formControlName="player">
+            <option *ngFor="let player of players" [value]="player">{{ player.nickName }}</option>
+        </select>
+        <div *ngIf="addTeamForm.get('players')?.invalid && addTeamForm.get('players')?.touched">
+            Players are required.
+        </div>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>

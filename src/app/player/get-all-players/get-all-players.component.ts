@@ -15,8 +15,14 @@ export class GetAllPlayersComponent {
   data!: any;
 
   constructor(private playerService: PlayerService, private router: Router) {
-    this.playerService.getAllPlayers().subscribe((data) => {
-      this.data = data;
+    this.playerService.getAllPlayers().subscribe({
+      next: (data) => {
+        this.data = data;
+      },
+      error: (error) => {
+        // Handle error here
+        console.error('An error occurred:', error);
+      }
     });
 
     

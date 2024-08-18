@@ -3,11 +3,11 @@ import { Player } from "./Player";
 export class Team {
     id: number;
     name: string;
-    players: Player[];
+    PlayerIds: number[];
     
-    constructor(id: number, name: string, players: Player[] = []) {
+    constructor(id: number, name: string, players: number[] = []) {
         this.id = id;
         this.name = name;
-        this.players = players;
+        this.PlayerIds = players;
     }
 }

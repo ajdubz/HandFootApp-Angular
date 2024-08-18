@@ -16,8 +16,13 @@ export class GetAllTeamsComponent {
   inId!: any;
 
   constructor(private teamService: TeamService, private router: Router) {
-    this.teamService.getAllTeams().subscribe((data) => {
-      this.data = data;
+    this.teamService.getAllTeams().subscribe({
+      next: (data) => {
+        this.data = data;
+      },
+      error: (error) => {
+        console.error(error);
+      }
     });
   }
 

@@ -26,7 +26,7 @@ import { Player } from '../../models/Player';
   styleUrls: ['./add-player.component.scss'],
 })
 export class AddPlayerComponent implements OnInit {
-  player: Player = new Player('', '', '');
+  player: Player = new Player('', '', '', 0, 0);
   name: string = '';
   email: string = '';
   password: string = '';
